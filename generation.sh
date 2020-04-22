@@ -9,17 +9,17 @@ mkdir -p $folder_name
 touch $folder_name/$infos_log_file
 touch $folder_name/$errors_log_file
 
+# gets all the results form genTick and redirect it on a specific log file :
 ./genTick $delay | ./genSensorData 2>&1 | {
 while IFS= read -r RAW_LINE; do
-echo $RAW_LINE
-    line_cut= $(echo $RAW_LINE | cut -d';' -f1);
+    line_cut=$(echo $RAW_LINE | cut -d';' -f1);
     if [[ $line_cut == "sensor" ]];
     then
         echo $RAW_LINE >> $folder_name/$infos_log_file;
     elif [[ $line_cut == "error" ]];
     then
         echo $RAW_LINE >> $folder_name/$errors_log_file;
-    elif [[ $line_cut == "Bienve" ]];
+    elif [[ $RAW_LINE == "Bienvenue !" ]];
     then
         continue;
     else
@@ -27,5 +27,3 @@ echo $RAW_LINE
     fi
 done
 }
-
-#./genTick $1 | ./genSensorData > $folder_name/$infos_log_file
