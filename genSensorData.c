@@ -5,15 +5,16 @@ int main(int argc, char *argv[]) {
     
     printf("Bienvenue !\n");
 
-    char gentickStatus[30];
-    while (fgets(gentickStatus,30,stdin)) {
-        if (strcmp(gentickStatus,"OK\n") == 0) {
+    char gentick_status[30];
+    while (fgets(gentick_status,30,stdin)) {
+        if (strcmp(gentick_status,"OK\n") == 0) {
             printf("sensor;0;100;20\n");
         }
-        else if (strcmp(gentickStatus,"ERROR\n") == 0) {
+        else if (strcmp(gentick_status,"ERROR\n") == 0) {
             printf("error;Impossible de lire la valeur\n");
         }
-        
+
+        fflush(stdout);
           
     }
 
