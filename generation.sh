@@ -18,12 +18,11 @@ while IFS= read -r RAW_LINE; do
     result_to_write=$(echo $RAW_LINE | cut -d';' -f1,2,3,5,6);
     if [[ $line_cut == "sensor" ]];
     then
-        echo $myUserPath/$folder_name/$infos_log_file
         echo $result_to_write >> $myUserPath/$folder_name/$infos_log_file;
     elif [[ $line_cut == "error" ]];
     then
         echo $RAW_LINE >> $myUserPath/$folder_name/$errors_log_file;
-    elif [[ $RAW_LINE == "Bienvenue !" ]];
+    elif [[ $RAW_LINE == "Welcome !" ]];
     then
         continue;
     else

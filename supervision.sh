@@ -4,13 +4,35 @@ delay=$1
 folder_name=$2
 infos_log_file=$3
 errors_log_file=$4
-file_weight=$5
+file_size=$5
 
- # get the weigth of the logs folder :
+ # get the size of the logs files:
  if [ -e /home/$USER/$folder_name/$infos_log_file ] && [ -e /home/$USER/$folder_name/$errors_log_file ];
     then
-        du -sh /home/$USER/$folder_name/$infos_log_file;
-        du -sh /home/$USER/$folder_name/$errors_log_file;
+        size_infos=`du -k /home/$USER/$folder_name/$infos_log_file | cut -f1`
+        size_errors=`du -k /home/$USER/$folder_name/$errors_log_file| cut -f1`
+
+        # compares the log file size to the size attribute and return the result.
+        if [ $size_infos -gt $file_size ];
+        then
+            echo "The size of $infos_log_file ($size_infos ko) is higher than $file_size Ko";
+        elif [ $size_infos -eq $file_size ];
+        then
+            echo "The size of $infos_log_file ($size_infos ko) is equal to $file_size Ko";
+        else 
+            echo "The size of $infos_log_file ($size_infos ko) is lower than $file_size Ko";
+        fi
+
+        if [ $size_errors -gt $file_size ];
+        then
+            echo "The size of $errors_log_file ($size_errors ko) is higher than $file_size Ko";
+        elif [ $size_errors -eq $file_size ];
+        then
+            echo "The size of $errors_log_file ($size_errors ko) is equal to $file_size Ko";
+        else 
+            echo "The size of $errors_log_file ($size_errors ko) is lower than $file_size Ko";
+        fi
+
     else 
         echo "Error: Missing log(s) file(s). Please execute generation.sh.";
-    fi
+fi

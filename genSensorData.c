@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
     
-    printf("Bienvenue !\n");
+    printf("Welcome !\n");
 
     char gentick_status[30];
     // gets the result frem genTick  and displays a message based on this status :
