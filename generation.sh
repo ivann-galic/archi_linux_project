@@ -8,6 +8,7 @@ errors_log_file=$4
 mkdir -p $folder_name
 touch $folder_name/$infos_log_file
 touch $folder_name/$errors_log_file
+myvariable=$USER
 
 # gets all the results form genTick and redirect it on a specific log file :
 ./genTick $delay | ./genSensorData 2>&1 | {
