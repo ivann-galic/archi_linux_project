@@ -5,7 +5,7 @@ folder_name=$2
 infos_log_file=$3
 errors_log_file=$4
 
-myUserPath=/home/$USER
+myUserPath=/home/$USER #get the user's main folder path
 mkdir -p $myUserPath/$folder_name
 touch $myUserPath/$folder_name/$infos_log_file
 touch $myUserPath/$folder_name/$errors_log_file
