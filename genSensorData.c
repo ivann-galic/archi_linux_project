@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     // gets the result frem genTick  and displays a message based on this status :
     while (fgets(gentick_status,30,stdin)) {
         if (strcmp(gentick_status,"OK\n") == 0) {
-            printf("sensor;0;100;20\n");
+            printf("sensor;1668457613;garage;0.5;2;2.5\n");
         }
         else if (strcmp(gentick_status,"ERROR\n") == 0) {
             printf("error;Impossible de lire la valeur\n");

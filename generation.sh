@@ -13,9 +13,10 @@ touch $folder_name/$errors_log_file
 ./genTick $delay | ./genSensorData 2>&1 | {
 while IFS= read -r RAW_LINE; do
     line_cut=$(echo $RAW_LINE | cut -d';' -f1);
+    result_to_write=$(echo $RAW_LINE | cut -d';' -f1,2,3,5,6);
     if [[ $line_cut == "sensor" ]];
     then
-        echo $RAW_LINE >> $folder_name/$infos_log_file;
+        echo $result_to_write >> $folder_name/$infos_log_file;
     elif [[ $line_cut == "error" ]];
     then
         echo $RAW_LINE >> $folder_name/$errors_log_file;
