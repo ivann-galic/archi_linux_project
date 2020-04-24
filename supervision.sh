@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 delay=$1
 folder_name=$2
 infos_log_file=$3
