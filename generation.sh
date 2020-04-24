@@ -10,6 +10,12 @@ mkdir -p $myUserPath/$folder_name
 touch $myUserPath/$folder_name/$infos_log_file
 touch $myUserPath/$folder_name/$errors_log_file
 
+# Traps the signal when generation.sh is closing and display a message :
+function signal_trap_closed() {
+    echo "generation.sh is closing.";
+}
+
+trap signal_trap_closed SIGTERM;
 
 # gets all the results form genTick and redirect it on a specific log file :
 ./genTick $delay | ./genSensorData 2>&1 | {
